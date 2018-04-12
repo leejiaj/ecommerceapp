@@ -1,6 +1,3 @@
-body{
-    background:pink;
-}
 
 .dropdown-menu .sub-menu {
   left: 100%;
@@ -19,5 +16,17 @@ body{
   display: block;
 }
 
+li{
+    list-style:none;
+}
+
+@media (min-width:1025px) { 
+	#carou .container{
+		max-width:750px;
+	}
+  	#myCarousel{
+  		margin-top:70px;
+  	}
+}
 
 
