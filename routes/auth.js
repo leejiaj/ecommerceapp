@@ -20,6 +20,7 @@ router.post("/register", function(req, res){
     User.register(newUser, req.body.password, function(err, user){
         if(err){
             //req.flash("error",err.message)
+            console.log("in auth");
             console.log("Error while regitering");
             return res.render("register");
         }
@@ -35,6 +36,21 @@ router.post("/register", function(req, res){
 router.get("/login", function(req, res){
    res.render("login"); 
 });
+
+//getting data from mongodb for AJAX call
+router.post("/grab",function(req,res){
+    User.find({$or:[{username:req.body.name},{email:req.body.email}]},function(err,users){
+        if(err)
+        {
+            console.log("Error occured while getting data from db")
+        }
+        else
+        {
+            console.log(users)
+            res.send(users);
+        }
+    })
+})
 
 //handling login logic
 router.post("/login", passport.authenticate("local", 

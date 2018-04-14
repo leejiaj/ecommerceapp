@@ -6,18 +6,17 @@
      <h1>Login page</h1>
         <form action="/login" method="POST">
             <div class="form-group">
-                <input class="form-control" type="text" name="username" placeholder="Username"></input>
+                <input id ="uname" class="form-control" type="text" name="username" placeholder="Username"></input>
             </div>
             <div class="form-group">
-                <input class="form-control" type="password" name="password" placeholder="Password"></input>
+                <input id="pwd" class="form-control" type="password" name="password" placeholder="Password"></input>
             </div>
              <div class="form-group">
-                   <button class="btn btn-primary">Login</button>
+                   <button  id ="submit" class="btn btn-primary">Login</button>
             </div>
         </form>
     </div>
 </div>
 </div>
-
-
+<script src="/scripts/validateLogin.js"></script>
 <% include partials/footer %>
