@@ -1,0 +1,26 @@
+<% include partials/header %>
+<div id="registerForm">
+<div class="container">
+<div style="width:30%; margin:20px auto;">
+    <h1>Account Setup</h1>
+<form  action="/register" method="POST">
+    <div class="form-group">
+        <label>Username</label>
+        <input class="form-control" type="text" name="username" placeholder="Username"></input>
+    </div>
+    <div class="form-group">
+        <label>Email ID</label>
+        <input class="form-control" type="text" name="email" placeholder="Email"></input>
+    </div>
+     <div class="form-group">
+        <label>Password</label>
+        <input class="form-control" type="password" name="password" placeholder="Password"></input>
+    </div>
+    <div class="form-group">
+         <button class="form-control btn btn-primary">Sign Up</button>
+    </div>
+</form>
+ </div>
+  </div>
+  </div>
+<% include partials/footer %>

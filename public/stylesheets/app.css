@@ -28,5 +28,7 @@ li{
   		margin-top:70px;
   	}
 }
-
+#registerForm .container,#loginForm .container{
+  padding-top: 8%;
+}
 
