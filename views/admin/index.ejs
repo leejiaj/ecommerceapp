@@ -1,0 +1,27 @@
+<% include ../partials/header %>
+<div id="adminList">
+    <div  class="container" >
+     
+     <div class="row text-center" style="display:flex; flex-wrap:wrap;">
+         <% prods.forEach(function(prod){ %>
+         <div class="col-md-4" "col-sm-6">
+             <div class="thumbnail">
+                  <img  src="<%= prod.image %>">
+                  <div class="caption">
+                      <h4><%= prod.name %></h4>
+                      <a class="btn btn-s btn-primary btn-xs" href="#">Edit</a>
+                      <form class ="deleteForm" action="/admin/<%= prod._id %>?_method=DELETE" method="POST">
+                         <button class="btn btn-danger btn-xs">Delete</button>
+                      </form>
+                  </div>
+             </div>
+         </div>
+    <% }); %>
+        
+    </div>
+     
+     
+</div>
+    
+</div>
+

@@ -35,12 +35,43 @@
                                </li>
                                <% }); %>
                         </ul>
+                        <% if(currentUser){ %>
+                           <% if(currentUser.isAdmin){ %>
+                               <ul class="nav navbar-nav navbar-center">
+                              <li><a href="/admin/add">Add Items</a></li>
+                              <li><a href="/admin/">Delete/UpdateItems Items</a></li>
+                               </ul>
+                           <% } %>
+                        
+                        <%    } %>
+                        
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="/login">Login</a></li>
-                            <li><a href="/register">SignUp</a></li>
+                            <% if(!currentUser){ %>
+                                   <li><a href="/login">Login  <i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
+                                  <li><a href="/register">  Sign Up <i class="fa fa-user-plus" aria-hidden="true"></i> </a></li>
+                            <%  }else{ %>
+                                  <li><a href="#">Signed in as <%= currentUser.username %></a></li>
+                                  <li> <a href="/logout">Logout  <i class="fa fa-times" aria-hidden="true"></i></a></li>
+                            <%    } %>
                         </ul>
                         
                     </div>
                 </div>
             </nav>
         </div>
+        
+        <div id="flashMsg">
+            <div class="container">
+    <% if(error && error.length>0){ %>
+         <div class="alert alert-danger" role="alert">
+            <%= error %>
+           </div>
+     <% } %>
+     <% if(success && success.length>0){ %>
+         <div class="alert alert-success" role="alert">
+            <%= success %>
+         </div>
+     <% } %>
+</div>
+        </div>
+

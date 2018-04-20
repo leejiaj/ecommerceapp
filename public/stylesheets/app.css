@@ -43,7 +43,7 @@ li{
 		max-width:750px;
 	}
   	#myCarousel{
-  		margin-top:70px;
+  		margin-top:50px;
   	}
 }
 #pswd_info h4 {
@@ -75,7 +75,25 @@ li{
     line-height:24px;
     color:#3a7d34;
 }
-#registerForm .container,#loginForm .container{
+#registerForm .container,#loginForm .container,#adminList .container{
   padding-top: 8%;
 }
 
+.deleteForm{
+    display: inline;
+}
+#flashMsg{
+    padding-top:5%;
+}
+
+.row.flex {
+  display: flex;
+  flex-wrap: wrap;
+ 
+}
+.thumbnail img{
+    max-height: 30%; 
+    max-width: 30%;
+    background-size: cover;
+    background-position: center center;
+}
