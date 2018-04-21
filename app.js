@@ -59,7 +59,7 @@ mongoose.connect("mongodb://localhost/ecomm");
 var authRoutes=require("./routes/auth");
 var adminRoutes=require("./routes/admin");
 
-
+// here 
 
 
 
