@@ -58,15 +58,15 @@ mongoose.connect("mongodb://localhost/ecomm");
 
 var authRoutes=require("./routes/auth");
 var adminRoutes=require("./routes/admin");
-
+var profileRoutes= require("./routes/profile");
 
 
 
 
 app.use(authRoutes);
 app.use("/admin",adminRoutes);
+app.use("/edit_profile",profileRoutes);
 
-
-app.listen(process.env.PORT,process.env.IP,function(){
-   console.log("YelpCamp server has started!"); 
-});
+app.listen(3000,function(){
+  console.log("Running on Port 3000");
+ });
