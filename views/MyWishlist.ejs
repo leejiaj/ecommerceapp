@@ -115,8 +115,8 @@
 									<th class="column-1">Product</th>
 									<th class="column-2"></th>
 									<th class="column-3">Price</th>
-									<th class="column-4">Quantity</th>
-									<th class="column-5">Total</th>
+									<!--<th class="column-4">Quantity</th>
+									<th class="column-5">Total</th>-->
 								</tr>
 								
 								<% for (var i=0;i< productDetails.length;i++){ %>
@@ -128,7 +128,7 @@
 									</td>
 									<td class="column-2"><%=productDetails[i][0]%></td>
 									<td class="column-3" id="price">$ <%=productDetails[i][1]%></td>
-									<td class="column-4">
+									<!--<td class="column-4">
 										<div class="wrap-num-product flex-w m-l-auto m-r-0" >
 											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
 												<i class="fs-16 zmdi zmdi-minus" onchange="quantity()"></i>
@@ -142,7 +142,7 @@
 										</div>
 									</td>
 									
-									<td class="column-5" id="total">$<%= 1* productDetails[i][1]%></td>
+									<td class="column-5" id="total">$<%= 1* productDetails[i][1]%></td>-->
 									
 								</tr>
 								<%}%>
