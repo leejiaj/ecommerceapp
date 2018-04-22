@@ -59,13 +59,16 @@ mongoose.connect("mongodb://localhost/ecomm");
 var authRoutes=require("./routes/auth");
 var adminRoutes=require("./routes/admin");
 var profileRoutes= require("./routes/profile");
-
-
-
+var cartRoutes= require("./routes/viewcart");
+var wishlistRoutes= require("./routes/viewwishlist");
+var purchaseRoutes= require("./routes/purchase");
 
 app.use(authRoutes);
 app.use("/admin",adminRoutes);
 app.use("/edit_profile",profileRoutes);
+app.use("/shopping_cart",cartRoutes);
+app.use("/MyWishlist",wishlistRoutes);
+app.use("/MyOrders",purchaseRoutes);
 
 app.listen(3000,function(){
   console.log("Running on Port 3000");
