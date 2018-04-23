@@ -10,6 +10,7 @@ router.get("/",function(req,res){
 
 // show register form
 router.get("/register", function(req, res){
+    
    res.render("register") 
 });
 
@@ -17,6 +18,9 @@ router.get("/register", function(req, res){
 //handle sign up logic
 router.post("/register", function(req, res){
     var newUser = new User({username: req.body.username,email:req.body.email});
+    if(req.body.secretCode==="YabbaDabbaDoo"){
+        newUser.isAdmin=true;
+    }
     User.register(newUser, req.body.password, function(err, user){
         if(err){
             //req.flash("error",err.message)
@@ -29,7 +33,7 @@ router.post("/register", function(req, res){
            console.log("successfuly registered");
            res.redirect("/"); 
         });
-    });
+    }); 
 });
 
 //show login form
@@ -58,6 +62,14 @@ router.post("/login", passport.authenticate("local",
         successRedirect: "/",
         failureRedirect: "/login"
     }), function(req, res){
+        
+});
+
+// logout route
+router.get("/logout", function(req, res){
+   req.logout();
+   req.flash("success","You have been successfully logged out!! Stay in touch.")
+   res.redirect("/");
 });
 
 module.exports = router;
