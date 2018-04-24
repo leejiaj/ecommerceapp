@@ -1,0 +1,40 @@
+<% include ../partials/header%>
+
+<div class="container">
+    <div class="row" style="display:flex; flex-wrap: wrap;">
+        <div class="col-md-9">
+            <div class="thumbnail">                    
+                <div class="caption">
+                    <h4><%= product.productname%></h4>
+                    <h5><%= product.categoryid%></h5>
+                </div>     
+                <div>                   
+                    <img src="<%= product.productimage1 %>">
+                    <img src="<%= product.productimage2 %>">
+                    <img src="<%= product.productimage3 %>">
+                    <img src="<%= product.productimage4 %>">
+                    <img src="<%= product.productimage5 %>">
+                </div>
+            </div>
+            <p><b>Vendor: </b><%= product.vendorid%></p>
+            <p><b>Stock Available: </b><%= product.stockavailable%></p>
+            <p><b>Rating: </b><%= product.rating%></p>
+            <p><b>Price: </b><%= product.price%></p>
+            <p><b>Product Details: </b></p>
+            <p><%= product.description%></p>
+        </div>
+
+        <div class="col-md-3">
+            <div style="margin:40px auto;">
+                <form action="/product" method="POST">
+                    <div class="form-group">
+                         <input type="submit" id="btnsubmit" class="form-control btn btn-primary" value="Add to Cart">
+                         </input>
+                    </div>
+                </form>
+             </div>
+        </div>
+    </div>
+</div>
+  
+<% include ../partials/footer%>
