@@ -38,7 +38,10 @@ router.post("/add",middleware.checkOwnership,function(req,res){
         else{
              //req.flash("success","Successfully added a new product");
              console.log("Added new item successfully");
-              res.redirect("/");
+
+              
+              res.redirect("/admin/");
+
         }
     });
 
@@ -58,5 +61,41 @@ router.delete("/:id",middleware.checkOwnership,function(req,res){
     })
 });
 
+
+
+/*Edit an existing campground*/
+router.get("/:id/edit",middleware.checkOwnership,function(req,res){
+    Product.findById(req.params.id,function(err,foundProd){
+        if(err)
+        {
+            req.flash("error","Oops! Something went wrong!");
+            return res.redirect("/admin");
+        }
+        else
+        {
+            res.render("admin/edit",{foundProd:foundProd});
+        }
+    });
+});
+
+/*Post route for editing a campground*/
+router.put("/:id",function(req,res)
+{   
+     console.log(req.body.name);
+     var newData={name:req.body.name,image:req.body.imageURL,price:req.body.price,description:req.body.desc};
+     Product.findByIdAndUpdate(req.params.id,{$set:newData},function(err,updatedCamp){
+        if(err)
+        {
+            res.redirect("/admin")
+        }
+        else
+        {
+            req.flash("success","Successfully updated the product")
+            res.redirect("/admin/");
+        }
+    });
+     
+    
+});
 
 module.exports = router;

@@ -4,12 +4,19 @@
      
      <div class="row text-center" style="display:flex; flex-wrap:wrap;">
          <% prods.forEach(function(prod){ %>
-         <div class="col-md-4" "col-sm-6">
+
+
+         <div class="col-md-4 col-sm-6">
+
              <div class="thumbnail">
                   <img  src="<%= prod.image %>">
                   <div class="caption">
                       <h4><%= prod.name %></h4>
-                      <a class="btn btn-s btn-primary btn-xs" href="#">Edit</a>
+
+                  
+
+                      <a class= "btn btn-warning btn-xs" href="/admin/<%= prod._id %>/edit">Edit</a>
+
                       <form class ="deleteForm" action="/admin/<%= prod._id %>?_method=DELETE" method="POST">
                          <button class="btn btn-danger btn-xs">Delete</button>
                       </form>

@@ -43,7 +43,7 @@ li{
 		max-width:750px;
 	}
   	#myCarousel{
-  		margin-top:70px;
+  		margin-top:50px;
   	}
 }
 #pswd_info h4 {
@@ -75,7 +75,94 @@ li{
     line-height:24px;
     color:#3a7d34;
 }
-#registerForm .container,#loginForm .container{
+#registerForm .container,#loginForm .container,#adminList .container{
   padding-top: 8%;
 }
 
+.deleteForm{
+    display: inline;
+}
+#flashMsg{
+    padding-top:5%;
+}
+
+.row.flex {
+  display: flex;
+  flex-wrap: wrap;
+ 
+}
+.thumbnail img{
+    max-height: 30%; 
+    max-width: 30%;
+    background-size: cover;
+    background-position: center center;
+}
+#categs {
+  display: flex;
+  justify-content: center;
+  padding:5%;
+}
+#categs .item img {
+  max-width: 100%;
+  vertical-align: top;
+  height: 210px;
+}
+#categs .item{
+  position: relative;
+  float: left;
+  overflow: hidden;
+  margin: 10px 1%;
+  min-width: 220px;
+  max-width: 310px;
+  width: 100%;
+  background: #000000;
+  text-align: center;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+}
+#categs .item * {
+  box-sizing: border-box;
+}
+
+#categs .item i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  font-size: 34px;
+  color: #000000;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  background: #ffffff;
+}
+
+#categs .item a {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+}
+#categs .item.red {
+  background-color: #e74c3c;
+}
+#categs .item.red i {
+  color: #e74c3c;
+}
+#categs .item:hover img {
+  opacity: 0.3;
+  filter: grayscale(100%);
+}
+
+#categs .item * {
+  transition: all .35s ease-in-out;
+}
+
+#categs .item i {
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 300ms 0ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+#categs .item:hover i {
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 300ms 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
