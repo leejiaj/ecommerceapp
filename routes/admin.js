@@ -30,7 +30,7 @@ router.post("/add",middleware.checkOwnership,function(req,res){
     var price=req.body.price;
     var image=req.body.imageURL;
     var desc=req.body.desc;
-    var newProduct={name:name, image:image,description:desc,price:price};
+    var newProduct={productname:name, productimage1:image,description:desc,price:price};
     Product.create(newProduct,function(err,newProd){
         if(err){
             console.log("Error while adding the new Product");

@@ -3,6 +3,7 @@ var router     = express.Router();
 var Product    = require("../models/product");
 var Cart       = require("../models/cart");
 var middleware = require("../middleware");
+var User = require("../models/user");
 
 // INDEX -- view all products, GET route
 router.get("/", function (req, res) {
@@ -21,7 +22,7 @@ router.get("/", function (req, res) {
 router.get("/:id", function (req, res) {
     // find the product with provided ID
     console.log(req.params.id);
-    Product.findOne({productid:req.params.id}).exec(function (err, foundProduct) {
+    Product.findOne({_id:req.params.id}).exec(function (err, foundProduct) {
         if (err) {
             console.log(err);
         } else {
