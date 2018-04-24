@@ -38,7 +38,10 @@ router.post("/add",middleware.checkOwnership,function(req,res){
         else{
              //req.flash("success","Successfully added a new product");
              console.log("Added new item successfully");
+
+              
               res.redirect("/admin/");
+
         }
     });
 
@@ -57,6 +60,7 @@ router.delete("/:id",middleware.checkOwnership,function(req,res){
         }
     })
 });
+
 
 
 /*Edit an existing campground*/
