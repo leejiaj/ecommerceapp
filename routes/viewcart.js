@@ -31,9 +31,9 @@ var express= require("express");
 						var output1 = [];
 		    			for(var i=0;i<result1.length;i++){
 		    				var temp1 = [];
-		    				temp1.push(result1[i].name);
+		    				temp1.push(result1[i].productname);
 							temp1.push(result1[i].price);
-							temp1.push(result1[i].image);
+							temp1.push(result1[i].productimage1);
 		    			 	output1.push(temp1);
 		    			}
 		    			//console.log(output1[0][0]);
