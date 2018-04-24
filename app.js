@@ -8,6 +8,7 @@ var express= require("express"),
     localStrategy=require("passport-local"),
     router=express.Router(),
     User=require("./models/user"),
+    Product=require("./models/product"),
     mongoose=require("mongoose")
 
 var Section=require("./models/section");
@@ -62,6 +63,7 @@ var profileRoutes= require("./routes/profile");
 var cartRoutes= require("./routes/viewcart");
 var wishlistRoutes= require("./routes/viewwishlist");
 var purchaseRoutes= require("./routes/purchase");
+var productRoutes=require("./routes/product");
 
 app.use(authRoutes);
 app.use("/admin",adminRoutes);
@@ -69,6 +71,7 @@ app.use("/edit_profile",profileRoutes);
 app.use("/shopping_cart",cartRoutes);
 app.use("/MyWishlist",wishlistRoutes);
 app.use("/MyOrders",purchaseRoutes);
+app.use("/product",productRoutes);
 
 app.listen(process.env.PORT,process.env.IP,function(){
    console.log("YelpCamp server has started!"); 
