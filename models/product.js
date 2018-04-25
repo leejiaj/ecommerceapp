@@ -2,7 +2,6 @@ var mongoose=require("mongoose");
 var passportLocalMongoose=require("passport-local-mongoose");
 
 var productSchema=new mongoose.Schema({
-    productid:String,
     productname:String,
     description:String,
     productimage1:String,
@@ -16,5 +15,5 @@ var productSchema=new mongoose.Schema({
     price:String,
     categoryid:String
 });
-productSchema.plugin(passportLocalMongoose);
+
 module.exports=mongoose.model("Product",productSchema);
