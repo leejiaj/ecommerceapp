@@ -11,7 +11,6 @@ router.get("/", function (req, res) {
         if (err) {
             console.log(err);
         } else {
-            console.log(allProducts);
             res.render("product/index", {products: allProducts, currentUser: req.user});
         }
     });
@@ -20,12 +19,11 @@ router.get("/", function (req, res) {
 // SHOW -- display info about a specific product, GET route
 router.get("/:id", function (req, res) {
     // find the product with provided ID
-    console.log(req.params.id);
-    Product.findOne({productid:req.params.id}).exec(function (err, foundProduct) {
+    //console.log(req.params.id);
+    Product.findOne({_id:req.params.id}).exec(function (err, foundProduct) {
         if (err) {
             console.log(err);
         } else {
-            console.log(foundProduct);
             // render the show template with the foundProduct
             res.render("product/show", {product: foundProduct});
         }
@@ -33,13 +31,11 @@ router.get("/:id", function (req, res) {
 });
 
 // add to cart, POST route 
-router.post("/", function (req, res) {
-    // get data from the form
-    var id = "2";
-    console.log(req.params.id);
-    //console.log(req.product.productid);
-    var productid = "1";
-    var newCart = {id: id, productid:productid};
+router.post("/:id", function (req, res) {
+
+    var username =req.user.username;
+    var productid = req.params.id;
+    var newCart = {username: username, productid:productid};
     
     // create a new cart and save it to the Database
     Cart.create(newCart, function (err, newlyCreated) {
