@@ -2,6 +2,7 @@ var express    = require("express");
 var router     = express.Router();
 var Product    = require("../models/product");
 var Cart       = require("../models/cart");
+var Review     = require("../models/review");
 var middleware = require("../middleware");
 
 // INDEX -- view all products, GET route
@@ -25,13 +26,21 @@ router.get("/:id", function (req, res) {
             console.log(err);
         } else {
             // render the show template with the foundProduct
-            res.render("product/show", {product: foundProduct});
+            Review.find({productid:req.params.id}, function (err, allReviews) {
+            if (err) {
+                    console.log(err);
+                    res.render("product/show", {product: foundProduct, currentUser: req.user});
+                } else {
+                    res.render("product/show", {product: foundProduct, reviews: allReviews, currentUser: req.user});
+                }
+            });
+            
         }
     });
 });
 
 // add to cart, POST route 
-router.post("/:id", function (req, res) {
+router.post("/:id", middleware.isLoggedIn, function (req, res) {
 
     var username =req.user.username;
     var productid = req.params.id;
@@ -44,7 +53,26 @@ router.post("/:id", function (req, res) {
         } else {
             // redirect to the product route
 
-            res.redirect("/product");
+            res.redirect("/product/" + req.params.id);
+        }
+    });
+});
+
+// add to review, POST route 
+router.post("/:id/addreview", function (req, res) {
+
+    var productid = req.params.id;
+    var reviewtext = req.body.review;
+    var newReview = {productid: productid, reviewtext:reviewtext};
+    
+    // create a new cart and save it to the Database
+    Review.create(newReview, function (err, newlyCreated) {
+        if (err) {
+            console.log(err);
+        } else {
+            // redirect to the product route
+
+            res.redirect("/product/" + req.params.id);
         }
     });
 });
