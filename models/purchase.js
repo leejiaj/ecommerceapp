@@ -7,7 +7,8 @@ var purchaseSchema={
     purchasedate:String,
     purchaseamount:String,
     shippingaddress: String,
-    orderstatus: String
+    orderstatus: String,
+    productid: Array
 };
 
 module.exports=mongoose.model("Purchase",purchaseSchema);
