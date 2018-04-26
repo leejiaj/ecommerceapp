@@ -47,11 +47,19 @@ router.post("/",function(req,res){
                     orderstatus: status,
                     productid: output
                 }
+
                 OrderDetail.create(newDetails, function(err,newlyCreated){
                     if(err){
                         console.log(err);
                     }else{
-                        res.render("success",{orderNumber:purchaseid});
+                        ViewCart.remove({username: username},function(err,result){
+                            if(err){
+                                console.log(err);
+                            }else{
+                                res.render("success",{orderNumber:purchaseid});
+                            }
+                        });
+                        
                     }
                 });
             

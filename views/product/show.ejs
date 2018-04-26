@@ -18,6 +18,14 @@
             </div>
             <p><b>Vendor: </b><%= product.vendorid%></p>
             <p><b>Stock Available: </b><%= product.stockavailable%></p>
+            <script type="text/javascript">
+            	$(function() {
+	            	if (<%= product.stockavailable%> != "Available") {
+					  document.getElementById('addtocartdiv').style.display = "none"; 
+					}
+				})
+
+            </script>
             <p><b>Rating: </b><%= product.rating%></p>
             <p><b>Price: </b>$<%= product.price%></p>
             <p><b>Product Details: </b></p>
@@ -25,7 +33,7 @@
         </div>
 
         <div class="col-md-3">
-            <div style="margin:40px auto;">
+            <div style="margin:40px auto;" id="addtocartdiv">
                 <form action="/product/<%= product._id%>" method="POST">
                     <div class="form-group">
                          <input type="submit" id="btnsubmit" class="form-control btn btn-primary" value="Add to Cart">
