@@ -25,7 +25,7 @@
 </div>
 
 	<!-- Shoping Cart -->
-	<form class="bg0 p-t-75 p-b-85"  action="/viewcart" method="POST">
+	<form class="bg0 p-t-75 p-b-85"  action="/shopping_cart" method="POST">
 		<div class="">
 			<div class="row">
 				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
@@ -78,6 +78,13 @@
 									</script>
 							</table>
 						</div> <br>
+						<div class="size-208">
+								<input id ="total" type="hidden" name="totalprice" value="<%= totalPrice %>" ></input>
+								<span class="mtext-101 cl2" >
+									Total: <%=totalPrice %>
+								</span>
+							</div>
+
 						<div class="header-cart-buttons flex-w w-full">
 
 						<button  id ="submit" class="btn btn-primary" style="width:30%; margin:20px auto;">Checkout</button>

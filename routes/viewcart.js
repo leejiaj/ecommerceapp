@@ -12,7 +12,7 @@ var express= require("express");
     	var Product=require("../models/product");
     	var username =req.user.username;
    		var produtId=[];
-    	//var produtId ="5adbc5e1aa30d630c8349cf8";
+    	
 
     		ViewCart.find({username: username}, function(err,result){
     		if(err){
@@ -37,7 +37,11 @@ var express= require("express");
 		    			 	output1.push(temp1);
 		    			}
 		    			//console.log(output1[0][0]);
-		    			res.render("shopping_cart",{productDetails: output1});
+                        var totalprice =0;
+                        for (var i=0;i<result1.length;i++){
+                            totalprice += parseFloat(result1[i].price); 
+                        }
+		    			res.render("shopping_cart",{productDetails: output1,totalPrice: totalprice });
 					}
 				});
     			 
@@ -47,8 +51,15 @@ var express= require("express");
 
 
 router.post("/",function(req,res){
-        var purchaseid = Math.random();
-        var username=req.body.username;
+        //var purchaseid = Math.random();
+        var username=req.user.username;
+        var total = req.body.totalprice;
+        //var date = (new Date()).toLocaleDateString();
+
+        
+        
+         res.render("orderdetails",{totalPrice:total});
+                 
         /*var productid:String,
         var purchasedate:String,
         var purchaseamount:String,

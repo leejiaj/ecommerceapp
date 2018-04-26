@@ -118,28 +118,26 @@
 						<div class="wrap-table-shopping-cart">
 							<table class="table-shopping-cart">
 								<tr class="table_head">
-									<th class="column-1">Product</th>
-									<th class="column-2"></th>
-									<th class="column-3">Purchase Amount</th>
-									<th class="column-4">Purchase Date</th>
-									<th class="column-5">Purchase Id</th>
+									<th class="column-1">Order Number</th>
+									<th class="column-1">Amount</th>
+									<th class="column-1">Order Date</th>
+									<th class="column-1">Status</th>
+									
 								</tr>
 								
 								
 								<% for (var i=0;i< purchaseDetails.length;i++){ %>
 
 								<tr class="table_row">
-									<td class="column-1">
+									<!--<td class="column-1">
 										<div class="how-itemcart1">
 											<img src="<%=purchaseDetails[i][4]%>" alt="IMG">
 										</div>
-									</td>
-									<td class="column-2"><%=purchaseDetails[i][3]%></td>
-									<td class="column-3" id="">$ <%=purchaseDetails[i][2]%></td>
-									<td class="column-3" id=""> <%=purchaseDetails[i][1]%></td>
-									
-									
-									<td class="column-5" id=""><%= purchaseDetails[i][0]%></td>
+									</td> -->
+									<td class="column-1"><%=purchaseDetails[i][0]%></td>
+									<td class="column-1" id="">$ <%=purchaseDetails[i][1]%></td>
+									<td class="column-1" id=""> <%=purchaseDetails[i][2]%></td>
+									<td class="column-1" id=""><%= purchaseDetails[i][3]%></td>
 									
 								</tr>
 								<%}%>
