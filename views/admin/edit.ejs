@@ -3,19 +3,20 @@
 <div class="container">
     <h1 style="text-align:center;">Edit <%= foundProd.name %></h1>
      <div style="width:30%; margin:20px auto;">
-    <form action="/admin/<%= foundProd._id %>?_method=PUT" method="POST">
+    <form action="/admin/<%= foundProd._id %>?_method=PUT" enctype="multipart/form-data" method="POST">
     
     <div class="form-group">
-       <input class="form-control" type="text" value="<%= foundProd.name %>" name="name"></input>
+       <input class="form-control" type="text" value="<%= foundProd.productname %>" name="name"></input>
     </div>
      <div class="form-group">
        <input class="form-control" type="number" value="<%= foundProd.price %>" name="price" step="0.01" min="0.00"></input>
     </div>
-    <div class="form-group">
-       <input class ="form-control" type="text" value="<%= foundProd.image %>" name="imageURL"></input>
-    </div>
      <div class="form-group">
           <input class ="form-control" type="text" value="<%= foundProd.description %>" name="desc"></input>
+    </div>
+    <div class="form-group">
+     <label for="image">Image</label>
+     <input type="file" id="image" name="image" accept="image/*">
     </div>
     <div class="form-group">
        <button class="btn btn-primary btn-block">Submit</button>

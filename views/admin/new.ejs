@@ -1,23 +1,42 @@
 
 <% include ../partials/header %>
-<div class="container">
+<% var sects=sections; %>
+<div id="addItem">
+    <div class="container">
     <h1 style="text-align:center;">Create a new Product</h1>
      <div style="width:30%; margin:20px auto;">
-    <form action="/admin/add" method="POST">
+    <form action="/admin/add" method="POST" enctype="multipart/form-data" id="addForm">
     
     <div class="form-group">
+        <label for="name">Name</label>
        <input class="form-control" type="text" placeholder="Name" name="name"></input>
     </div>
     <div class="form-group">
+        <label for="price">Price</label>
        <input class="form-control" type="number" placeholder="Price" name="price" step="0.01" min="0.00"></input>
     </div>
     <div class="form-group">
-
+        <label for="desc">Description</label>
          <input class="form-control" type="text" name="desc" id="Description" placeholder="Enter Description here">
-
     </div>
     <div class="form-group">
-       <input class ="form-control" type="text" placeholder="Image URL" name="imageURL"></input>
+        <label for="section">Section</label>
+        
+         <select id ="sectionSelect" class="form-control" name="section" form="addForm">
+             <option>Select a section</option>
+             <% sections.forEach(function(section){ %>
+             <option><%= section.name %></option>
+             <% }); %>
+         </select>
+    </div>
+    <div class="form-group">
+        <label for="category">Category</label>
+         <select id="catSelect" class="form-control" name="category" form="addForm">
+         </select>
+    </div>
+    <div class="form-group">
+     <label for="image">Image</label>
+     <input type="file" id="image" name="image" accept="image/*" required>
     </div>
     <div class="form-group">
        <button class="btn btn-primary btn-block">Submit</button>
@@ -25,7 +44,57 @@
    
   
     </form>
+     </div>
+</div>
+</div>
+
+<script>
+function addoptions(data)
+{
+    console.log(data.categories);
+    var cats=[];
+    var len=(data.categories.length)
+    if(!$.trim(data))
+    {
+        $("#catSelect").find('option').remove().end();
+        return;
+    }
+    else
+    {
+        var i=0;
+    for(i=0;i<len;i++)
+    {
+       cats[i]=data.categories[i];
+    }
+    $("#catSelect").find('option').remove().end();
+    for(i=0;i<len;i++){
+       $("#catSelect").append("<option>"+cats[i]+"</option>");
+    }
+    }
+    
+}
+   $("#sectionSelect").change(function(){
+       var selValue=$("#sectionSelect option:selected").text();
+       $.ajax({
+           type:'POST',
+           url:'/admin/grab',
+           data:{name:selValue},
+           success:function(data)
+           {
+               //console.log(data);
+               var cats=[];
+               var i=0;
+               addoptions(data);
+           },
+           error:function(){
+               $("#catSelect").find('option').remove().end();
+                          console.log("Error" + data);
+                      }
+           
+       });
+   })
+        
+</script>
     
 <% include ../partials/footer %>
-  </div>
-</div>
+ 

@@ -2,7 +2,8 @@ var express= require("express");
 var router=express.Router();
 var passport=require("passport");
 var User = require("../models/user");
-
+var Product = require("../models/product");
+var textSearch = require('mongoose-text-search');
 
 router.get("/",function(req,res){
     res.render("index");
@@ -53,6 +54,19 @@ router.post("/grab",function(req,res){
             console.log(users)
             res.send(users);
         }
+    })
+})
+
+
+router.post("/search",function(req,res){
+    console.log(req.body.srchterm);
+    /*Product.textSearch(req.body.srchterm,function(err,output){
+        console.log("otupt", output);
+        res.send(output);
+    })*/
+    Product.find({$text: {$search: req.body.srchterm}},function(err,found){
+        console.log(found);
+        res.render("product/index",{products: found, currentUser: req.user})
     })
 })
 
