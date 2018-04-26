@@ -13,7 +13,7 @@ var productSchema=new mongoose.Schema({
     stockavailable:String,
     rating:String,
     price:String,
-    categoryid:String
+    category:String
 });
 
 module.exports=mongoose.model("Product",productSchema);
