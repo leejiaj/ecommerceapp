@@ -10,14 +10,14 @@
         res.render("edit_profile",{currentUser: req.user});
     });
 
-    var UserDetail=require("../models/user_detail");
+    var User = require("../models/user");
 
     router.post("/",function(req,res){
         var username= req.body.username;
         var firstname= req.body.fname;
         var lastname= req.body.lname;
-        var gender = req.body.gender;
-        var dob= req.body.dob;
+        //var gender = req.body.gender;
+        //var dob= req.body.dob;
         var mnumber = req.body.mnumber;
         var address= req.body.address;
 
@@ -25,15 +25,19 @@
             username: username,
             firstname: firstname,
             lastname: lastname,
-            gender: gender,
-            dob: dob,
             mobilenumber: mnumber,
             address: address
         };
 
-       
+        User.update({$set:newDetails},function(err,result){
+                    if(err){
+                        console.log("Error while updating");
+                    }else{
+                        res.redirect("/edit_profile");
+                    }
+                });       
 
-        UserDetail.find({username: username}, function(err,result){
+        /*UserDetail.find({username: username}, function(err,result){
             if(err){
                     console.log("Error while finding");
                 }
@@ -57,7 +61,7 @@
                 });
             }
             
-        });
+        });*/
 
     });
     module.exports = router;
