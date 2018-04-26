@@ -9,12 +9,9 @@
          <div class="col-md-4 col-sm-6">
 
              <div class="thumbnail">
-                  <img  src="<%= prod.image %>">
+                  <img  src="<%= prod.productimage1 %>">
                   <div class="caption">
-                      <h4><%= prod.name %></h4>
-
-                  
-
+                      <h4><%= prod.productname %></h4>
                       <a class= "btn btn-warning btn-xs" href="/admin/<%= prod._id %>/edit">Edit</a>
 
                       <form class ="deleteForm" action="/admin/<%= prod._id %>?_method=DELETE" method="POST">
@@ -31,4 +28,7 @@
 </div>
     
 </div>
+
+
+<% include ../partials/footer %>
 

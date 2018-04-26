@@ -4,6 +4,7 @@ var Product    = require("../models/product");
 var Cart       = require("../models/cart");
 var Review     = require("../models/review");
 var middleware = require("../middleware");
+var User = require("../models/user");
 
 // INDEX -- view all products, GET route
 router.get("/", function (req, res) {
@@ -20,7 +21,7 @@ router.get("/", function (req, res) {
 // SHOW -- display info about a specific product, GET route
 router.get("/:id", function (req, res) {
     // find the product with provided ID
-    //console.log(req.params.id);
+    console.log(req.params.id);
     Product.findOne({_id:req.params.id}).exec(function (err, foundProduct) {
         if (err) {
             console.log(err);

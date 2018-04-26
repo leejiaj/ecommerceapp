@@ -64,6 +64,11 @@ var cartRoutes= require("./routes/viewcart");
 var wishlistRoutes= require("./routes/viewwishlist");
 var purchaseRoutes= require("./routes/purchase");
 var productRoutes=require("./routes/product");
+var womenRoutes=require("./routes/women");
+var menRoutes=require("./routes/men");
+var viewprofileRoutes= require("./routes/updatedprofile");
+var orderRoutes= require("./routes/orders");
+
 
 app.use(authRoutes);
 app.use("/admin",adminRoutes);
@@ -72,7 +77,11 @@ app.use("/shopping_cart",cartRoutes);
 app.use("/MyWishlist",wishlistRoutes);
 app.use("/MyOrders",purchaseRoutes);
 app.use("/product",productRoutes);
+app.use("/Women",womenRoutes);
+app.use("/Men",menRoutes);
+app.use("/viewprofile",viewprofileRoutes);
+app.use("/orderdetails",orderRoutes);
 
-app.listen(3000,function(){
-  console.log("Running on Port 3000");
- });
+app.listen(process.env.PORT,process.env.IP,function(){
+   console.log("YelpCamp server has started!"); 
+});

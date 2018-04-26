@@ -2,7 +2,8 @@ var express= require("express");
 var router=express.Router();
 var passport=require("passport");
 var User = require("../models/user");
-
+var Product = require("../models/product");
+var textSearch = require('mongoose-text-search');
 
 router.get("/",function(req,res){
     res.render("index");
@@ -17,7 +18,7 @@ router.get("/register", function(req, res){
 
 //handle sign up logic
 router.post("/register", function(req, res){
-    var newUser = new User({username: req.body.username,email:req.body.email});
+    var newUser = new User({username: req.body.username,email:req.body.email,firstname:req.body.firstname,lastname:req.body.lastname,mobilenumber:req.body.mobile,address:req.body.address});
     if(req.body.secretCode==="YabbaDabbaDoo"){
         newUser.isAdmin=true;
     }
@@ -53,6 +54,19 @@ router.post("/grab",function(req,res){
             console.log(users)
             res.send(users);
         }
+    })
+})
+
+
+router.post("/search",function(req,res){
+    console.log(req.body.srchterm);
+    /*Product.textSearch(req.body.srchterm,function(err,output){
+        console.log("otupt", output);
+        res.send(output);
+    })*/
+    Product.find({$text: {$search: req.body.srchterm}},function(err,found){
+        console.log(found);
+        res.render("product/index",{products: found, currentUser: req.user})
     })
 })
 
