@@ -5,7 +5,7 @@ var userDetailSchema=new mongoose.Schema({
     firstname: String,
     lastname: String,
     gender: String,
-    dob: Date,
+    dob: String,
     mobilenumber: Number,
     address: String,
 });
