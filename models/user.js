@@ -5,7 +5,13 @@ var userSchema=new mongoose.Schema({
     username:String,
     password:String,
     email:String,
-    isAdmin:Boolean
+    firstname: String,
+    lastname: String,
+    isAdmin:Boolean,
+    gender: String,
+    dob: String,
+    mobilenumber: Number,
+    address: String,
 });
 userSchema.plugin(passportLocalMongoose);
 module.exports=mongoose.model("User",userSchema);

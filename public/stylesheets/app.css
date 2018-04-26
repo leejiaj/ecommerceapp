@@ -1,3 +1,4 @@
+
 #pagin {
   display: table;
   margin: auto;
@@ -79,8 +80,9 @@ li{
     line-height:24px;
     color:#3a7d34;
 }
-#registerForm .container,#loginForm .container,#adminList .container{
-  padding-top: 8%;
+#registerForm .container, #addItem .container{
+  padding: 2.5%;
+  max-width:100%;
 }
 
 .deleteForm{
@@ -148,10 +150,10 @@ li{
   position: absolute;
 }
 #categs .item.red {
-  background-color: #e74c3c;
+  background-color: #ffdb58;
 }
 #categs .item.red i {
-  color: #e74c3c;
+  color: #ffdb58;
 }
 #categs .item:hover img {
   opacity: 0.3;
@@ -169,4 +171,16 @@ li{
 #categs .item:hover i {
   transform: translate(-50%, -50%) scale(1);
   transition: transform 300ms 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+html,body{
+  height:100%;
+}
+
+#foot nav {
+    padding: 1em;
+    color: white;
+    background-color: black;
+    clear: left;
+    text-align: center;
+    flex-shrink:0;
 }
