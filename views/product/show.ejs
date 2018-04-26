@@ -6,7 +6,7 @@
             <div class="thumbnail">                    
                 <div class="caption">
                     <h4><%= product.productname%></h4>
-                    <h5><%= product.categoryid%></h5>
+                    <h5><%= product.category%></h5>
                 </div>     
                 <div>                   
                     <img src="<%= product.productimage1 %>">
@@ -19,7 +19,7 @@
             <p><b>Vendor: </b><%= product.vendorid%></p>
             <p><b>Stock Available: </b><%= product.stockavailable%></p>
             <p><b>Rating: </b><%= product.rating%></p>
-            <p><b>Price: </b><%= product.price%></p>
+            <p><b>Price: </b>$<%= product.price%></p>
             <p><b>Product Details: </b></p>
             <p><%= product.description%></p>
         </div>
