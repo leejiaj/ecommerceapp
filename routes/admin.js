@@ -20,7 +20,7 @@ router.get("/",middleware.checkOwnership,function(req,res){
     }
 });
 });
-router.get("/add",function(req,res){
+router.get("/add",middleware.checkOwnership,function(req,res){
     res.render("admin/new");
 });
 
