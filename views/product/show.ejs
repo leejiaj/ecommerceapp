@@ -32,7 +32,30 @@
                          </input>
                     </div>
                 </form>
-             </div>
+            </div>
+            <div class="well">
+                <div style="margin:40px auto;">
+                    <form action="/product/<%= product._id%>/addreview" method="POST">
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="review" placeholder="Write your review here..">
+                        </div>
+                        <div class="form-group">
+                             <input type="submit" id="btnsubmit" class="form-control btn btn-primary" value="Add Review">
+                             </input>
+                        </div>
+                    </form>
+                </div>
+                <hr>
+                <% reviews.forEach(function (review) { %>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>
+                            <%= review.reviewtext %>
+                        </p>
+                    </div>
+                </div>
+                <% }) %>
+            </div>
         </div>
     </div>
 </div>
