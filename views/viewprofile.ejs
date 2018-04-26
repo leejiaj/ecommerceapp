@@ -1,21 +1,20 @@
 <% include partials/header %>
-<div id="Edit Profile">
-<div class="container">
-    <div style="width:30%; margin:20px auto;">
-        
-     <h1>Your Profile</h1>
-        <form action="/viewprofile" method="POST">
-            <div class="form-group">
-                <label>Username: </label> <p> <%=userDetails[6] %></p> 
-                <label>Name: </label><p> <%=userDetails[0] %> <%=userDetails[1] %> </p>  
-                <label>Contact Number: </label> <p> <%=userDetails[4] %></p> </label>
-                <label>Date of Birth: </label> <p> <%=userDetails[3] %></p> 
-                <label>Gender: </label> <p> <%=userDetails[2] %></p> </label>
-                <label>Address: </label> <p> <%=userDetails[5] %></p> </label>
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+<div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="mt-5">Username: <%=userDetails[6] %></h2>
           
+          <ul class="list-unstyled">
+            <li>Name: <%=userDetails[0] %> <%=userDetails[1] %></li>
+            <li>Contact Number: <%=userDetails[4] %> </li>
+            <li>Date of Birth: <%=userDetails[3] %> </li>
+            <li>Gender: <%=userDetails[2] %> </li>
+            <li> Address: <%=userDetails[5] %></li>
+          </ul>
+        </div>
+      </div>
     </div>
-</div>
-</div>
-<script src="/scripts/validateLogin.js"></script>
+
 <% include partials/footer %>

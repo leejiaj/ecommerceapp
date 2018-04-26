@@ -65,6 +65,7 @@ var wishlistRoutes= require("./routes/viewwishlist");
 var purchaseRoutes= require("./routes/purchase");
 var productRoutes=require("./routes/product");
 var viewprofileRoutes= require("./routes/updatedprofile");
+var orderRoutes= require("./routes/orders");
 
 app.use(authRoutes);
 app.use("/admin",adminRoutes);
@@ -74,6 +75,7 @@ app.use("/MyWishlist",wishlistRoutes);
 app.use("/MyOrders",purchaseRoutes);
 app.use("/product",productRoutes);
 app.use("/viewprofile",viewprofileRoutes);
+app.use("/orderdetails",orderRoutes);
 
 app.listen(3000,function(){
   console.log("Running on Port 3000");
