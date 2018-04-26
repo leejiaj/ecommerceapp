@@ -11,10 +11,26 @@ var express= require("express");
     	var Purchase=require("../models/purchase");
     	var Product=require("../models/product");
     	var username =req.user.username;
-   		var produtId=[];
+   		//var produtId=[];
 
-
-    		Purchase.find({username: username}, function(err,result){
+        Purchase.find({username: username}, function(err,result){
+            if(err){
+                console.log(err);
+            }else{
+                 //console.log(result.length);
+                var output = [];
+                for(var i=0;i<result.length;i++){
+                    var output1=[];
+                    //produtId.push(result[i].productid);
+                    output1.push(result[i].purchaseid);
+                    output1.push(result[i].purchaseamount);
+                    output1.push(result[i].purchasedate);
+                    output1.push(result[i].orderstatus);
+                    output.push(output1);
+                }
+                res.render("MyOrders",{purchaseDetails: output});
+            }
+    		/*Purchase.find({username: username}, function(err,result){
     		if(err){
     			console.log(err);
     		}else{
@@ -54,7 +70,7 @@ var express= require("express");
 					}
 				});
     			 
-    			}
+    			}*/
     		});        
     });
 

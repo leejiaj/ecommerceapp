@@ -6,7 +6,7 @@
             <div class="thumbnail">                    
                 <div class="caption">
                     <h4><%= product.productname%></h4>
-                    <h5><%= product.categoryid%></h5>
+                    <h5><%= product.category%></h5>
                 </div>     
                 <div>                   
                     <img src="<%= product.productimage1 %>">
@@ -19,20 +19,43 @@
             <p><b>Vendor: </b><%= product.vendorid%></p>
             <p><b>Stock Available: </b><%= product.stockavailable%></p>
             <p><b>Rating: </b><%= product.rating%></p>
-            <p><b>Price: </b><%= product.price%></p>
+            <p><b>Price: </b>$<%= product.price%></p>
             <p><b>Product Details: </b></p>
             <p><%= product.description%></p>
         </div>
 
         <div class="col-md-3">
             <div style="margin:40px auto;">
-                <form action="/product" method="POST">
+                <form action="/product/<%= product._id%>" method="POST">
                     <div class="form-group">
                          <input type="submit" id="btnsubmit" class="form-control btn btn-primary" value="Add to Cart">
                          </input>
                     </div>
                 </form>
-             </div>
+            </div>
+            <div class="well">
+                <div style="margin:40px auto;">
+                    <form action="/product/<%= product._id%>/addreview" method="POST">
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="review" placeholder="Write your review here..">
+                        </div>
+                        <div class="form-group">
+                             <input type="submit" id="btnsubmit" class="form-control btn btn-primary" value="Add Review">
+                             </input>
+                        </div>
+                    </form>
+                </div>
+                <hr>
+                <% reviews.forEach(function (review) { %>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>
+                            <%= review.reviewtext %>
+                        </p>
+                    </div>
+                </div>
+                <% }) %>
+            </div>
         </div>
     </div>
 </div>

@@ -4,7 +4,7 @@
        
         <div class="row" style="display:flex; flex-wrap: wrap;">
             <%products.forEach(function (product) {%>
-                <div class="col-md-3">
+                <div class="col-md-3 product-content">
                     <div class="thumbnail">              
                         <div class="caption">
                             <a href="/product/<%= product._id%>"><h4><%= product.productname%></h4></a>
@@ -12,11 +12,49 @@
                         </div>                     
                             <img src="<%= product.productimage1 %>">
                         <p><b>Rating: </b><%= product.rating%></p>
-                        <p><b>Price: </b><%= product.price%></p>
+                        <p><b>Price: </b>$<%= product.price%></p>
                     </div>
                 </div>
             <% }); %>
+
+            <script type="text/javascript">
+                //Pagination
+
+                $(function() {
+                  pageSize = 8;
+                  var pageCount = Math.ceil($(".product-content").length / pageSize);
+
+                  for (var i = 0; i < pageCount; i++) {
+                    if (i == 0)
+                      $("#pagin").append('<li><a href="#">' + (i + 1) + '</a></li>');
+                    else
+                      $("#pagin").append('<li><a href="#">' + (i + 1) + '</a></li>');
+                  }
+
+                  showPage(1);
+
+                  $("#pagin li a").click(function() {
+                    showPage(parseInt($(this).text()))
+                  });
+
+                })
+
+                showPage = function(page) {
+                  $(".product-content").hide();
+
+                  $(".product-content").each(function(n) {
+                    if (n >= pageSize * (page - 1) && n < pageSize * page)
+                      $(this).show();
+                  });
+                }
+    
+            </script>
+
+
+
         </div>
+            <ul id="pagin" class="pagination">
+            </ul>
         
     </div>
 

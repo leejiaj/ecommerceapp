@@ -1,6 +1,8 @@
-@import "compass/css3";
 
-@import url(https://fonts.googleapis.com/css?family=Raleway);
+#pagin {
+  display: table;
+  margin: auto;
+}
 
 .dropdown-menu .sub-menu {
   left: 100%;
