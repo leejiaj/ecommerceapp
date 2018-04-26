@@ -1,3 +1,7 @@
+#pagin {
+  display: table;
+  margin: auto;
+}
 
 .dropdown-menu .sub-menu {
   left: 100%;
