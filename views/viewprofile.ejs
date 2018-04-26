@@ -1,0 +1,21 @@
+<% include partials/header %>
+<div id="Edit Profile">
+<div class="container">
+    <div style="width:30%; margin:20px auto;">
+        
+     <h1>Your Profile</h1>
+        <form action="/viewprofile" method="POST">
+            <div class="form-group">
+                <label>Username: </label> <p> <%=userDetails[6] %></p> 
+                <label>Name: </label><p> <%=userDetails[0] %> <%=userDetails[1] %> </p>  
+                <label>Contact Number: </label> <p> <%=userDetails[4] %></p> </label>
+                <label>Date of Birth: </label> <p> <%=userDetails[3] %></p> 
+                <label>Gender: </label> <p> <%=userDetails[2] %></p> </label>
+                <label>Address: </label> <p> <%=userDetails[5] %></p> </label>
+
+          
+    </div>
+</div>
+</div>
+<script src="/scripts/validateLogin.js"></script>
+<% include partials/footer %>
