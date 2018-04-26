@@ -18,7 +18,7 @@ router.post("/",function(req,res){
             max = Math.floor(max);
             return Math.floor(Math.random() * (max - min + 1)) + min; 
         }
-        var purchaseid = getRandomIntInclusive(1000,10000);
+        var purchaseid = getRandomIntInclusive(100000,900000);
         var username=req.user.username;
         var total = req.body.totalprice;
         var date = (new Date()).toLocaleDateString();
