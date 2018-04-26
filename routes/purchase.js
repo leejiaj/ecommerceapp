@@ -41,9 +41,9 @@ var express= require("express");
                                     temp1.push(result[j].purchaseid);
                                     temp1.push(result[j].purchasedate);
                                     temp1.push(result[j].purchaseamount);
-                                    temp1.push(result1[i].name);
+                                    temp1.push(result1[i].productname);
                                     //temp1.push(result1[i].price);
-                                    temp1.push(result1[i].image);
+                                    temp1.push(result1[i].productimage1);
                                     output1.push(temp1);
                                 }
                             }
