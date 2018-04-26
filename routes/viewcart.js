@@ -46,4 +46,60 @@ var express= require("express");
     });
 
 
+router.post("/",function(req,res){
+        var purchaseid = Math.random();
+        var username=req.body.username;
+        /*var productid:String,
+        var purchasedate:String,
+        var purchaseamount:String,
+        var shippingaddress: String
+
+        var username= 
+        var firstname= req.body.fname;
+        var lastname= req.body.lname;
+        var gender = req.body.gender;
+        var dob= req.body.dob;
+        var mnumber = req.body.mnumber;
+        var address= req.body.address;
+
+        var newDetails= {
+            username: username,
+            firstname: firstname,
+            lastname: lastname,
+            gender: gender,
+            dob: dob,
+            mobilenumber: mnumber,
+            address: address
+        };
+
+       
+
+        UserDetail.find({username: username}, function(err,result){
+            if(err){
+                    console.log("Error while finding");
+                }
+
+            else if(result.length>0){
+                UserDetail.update({$set:newDetails},function(err,result){
+                    if(err){
+                        console.log("Error while updating");
+                    }else{
+                        res.redirect("/edit_profile");
+                    }
+                });
+                    
+            }else{
+                UserDetail.create(newDetails, function(err,newlyCreated){
+                    if(err){
+                        console.log(err);
+                    }else{
+                        res.redirect("/edit_profile");
+                    }
+                });
+            }
+            
+        });*/
+
+    });
+
 module.exports = router;
