@@ -21,9 +21,10 @@ var express= require("express");
                 var output = [];
                 for(var i=0;i<result.length;i++){
                     var output1=[];
+                    console.log(result[i].productid.length);
                     //produtId.push(result[i].productid);
                     output1.push(result[i].purchaseid);
-                    output1.push(result[i].purchaseamount);
+                    output1.push(result[i].purchaseamount);//
                     output1.push(result[i].purchasedate);
                     output1.push(result[i].orderstatus);
                     output.push(output1);
