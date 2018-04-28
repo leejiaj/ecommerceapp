@@ -80,8 +80,9 @@ li{
     line-height:24px;
     color:#3a7d34;
 }
-#registerForm .container, #addItem .container, #editprofile .container{
-  padding: 2.5%;
+
+#registerForm .container, #addItem .container, #editprofile .container,#product .container{
+  padding: 5%;
   max-width:100%;
 }
 

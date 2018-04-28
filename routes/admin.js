@@ -28,7 +28,7 @@ cloudinary.config({
 });
 
 
-/*Show all campgrounds. Show index page*/
+/*Show all products. Show index page*/
 router.get("/",middleware.checkOwnership,function(req,res){
     Product.find({},function(err,prods){
     if(err)
@@ -55,7 +55,7 @@ router.post("/add",middleware.checkOwnership,upload.single('image'),function(req
             console.log("Eror");
             res.redirec("/admin");
         }
-        // add cloudinary url for the image to the campground object under image property
+        // add cloudinary url for the image to the product object under image property
        req.body.imageURL = result.secure_url;
        req.body.imageId = result.public_id;
        var name=req.body.name;
@@ -83,7 +83,7 @@ router.post("/add",middleware.checkOwnership,upload.single('image'),function(req
     
 
     });
-/*Delete route for deleting a campground*/
+/*Delete route for deleting a product*/
 router.delete("/:id",middleware.checkOwnership,function(req,res){
     console.log("Reached here");
     Product.findByIdAndRemove(req.params.id,function(err,deletedCamp){
@@ -92,7 +92,7 @@ router.delete("/:id",middleware.checkOwnership,function(req,res){
             res.redirect("/admin");
         }
         else{
-            req.flash("success","Successfully deleted the campground")
+            req.flash("success","Successfully deleted the product")
             res.redirect("/admin");
         }
     })
@@ -100,7 +100,7 @@ router.delete("/:id",middleware.checkOwnership,function(req,res){
 
 
 
-/*Edit an existing campground*/
+/*Edit an existing product*/
 router.get("/:id/edit",middleware.checkOwnership,function(req,res){
     Product.findById(req.params.id,function(err,foundProd){
         if(err)
@@ -143,7 +143,7 @@ router.put("/:id", middleware.checkOwnership,upload.single('image'), function(re
 });
 
 
-/*Post route for editing a campground*/
+/*Post route for editing a product*/
 /*
 router.put("/:id",middleware.checkOwnership,upload.single('image'),function(req,res)
 {   
@@ -158,7 +158,7 @@ router.put("/:id",middleware.checkOwnership,upload.single('image'),function(req,
             if (req.file)
             {
                 try {
-                  await cloudinary.v2.uploader.destroy(campground.imageId);
+                  await cloudinary.v2.uploader.destroy(product.imageId);
                   var result = await cloudinary.v2.uploader.upload(req.file.path);
                   product.imageId = result.public_id;
                   product.image = result.secure_url;
