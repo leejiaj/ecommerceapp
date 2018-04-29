@@ -1,0 +1,129 @@
+
+
+<% include ../partials/header %>
+
+		<!--<link rel="stylesheet" type="text/css" href="/stylesheets/vendor/bootstrap/css/bootstrap.min.css">-->
+        <link rel="stylesheet" type="text/css" href="/stylesheets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/fonts/iconic/css/material-design-iconic-font.min.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/fonts/linearicons-v1.0.0/icon-font.min.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/vendor/animate/animate.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/vendor/css-hamburgers/hamburgers.min.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/vendor/animsition/css/animsition.min.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/vendor/select2/select2.min.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/vendor/perfect-scrollbar/perfect-scrollbar.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/css/util.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/css/main.css">
+        <link rel="icon" type="image/png" href="/stylesheets/images/icons/favicon.png"/>
+
+<div class="container">
+    <div style="width:30%; margin:20px auto;">
+        
+     <h1>Orders</h1>
+     </div></div>
+      
+
+	<!-- Orders -->
+	<form class="bg0 p-t-75 p-b-85">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
+					<div class="m-l-25 m-r--38 m-lr-0-xl">
+						<div class="wrap-table-shopping-cart">
+							<table class="table-shopping-cart">
+								<tr class="table_head">
+									<th class="column-1">Order Number</th>
+									<th class="column-1">Product</th>
+									<th class="column-2"></th>
+									<th class="column-1">Amount</th>
+									<th class="column-1">Order Date</th>
+									<th class="column-1">Status</th>
+									
+								</tr>
+								
+								
+								<% for (var i=0;i< purchaseDetails.length;i++){ %>
+
+								<tr class="table_row">
+									
+									<td class="column-1"><%=purchaseDetails[i][0]%></td>
+									<td class="column-1">
+										<div class="how-itemcart1">
+											<img src="<%=purchaseDetails[i][4]%>" alt="IMG">
+										</div>
+									</td>
+									<td class="column-2"><%=purchaseDetails[i][2]%></td>
+									<td class="column-1" id="">$ <%=purchaseDetails[i][3]%></td>
+									<td class="column-1" id=""> <%=purchaseDetails[i][1]%></td>
+									<td class="column-1" id=""><%= purchaseDetails[i][5]%></td>
+									
+								</tr>
+								<%}%>
+								
+							</table>
+						</div>
+
+						
+					</div>
+				</div>
+
+				
+			</div>
+		</div>
+	</form>
+		
+	
+		
+
+	
+
+	<!-- Back to top -->
+	<div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="zmdi zmdi-chevron-up"></i>
+		</span>
+	</div>
+
+<!--===============================================================================================-->	
+	<script src="../public/stylesheets/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../public/stylesheets/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../public/stylesheets/vendor/bootstrap/js/popper.js"></script>
+	<script src="../public/stylesheets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../public/stylesheets/vendor/select2/select2.min.js"></script>
+	<script>
+		$(".js-select2").each(function(){
+			$(this).select2({
+				minimumResultsForSearch: 20,
+				dropdownParent: $(this).next('.dropDownSelect2')
+			});
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="../public/stylesheets/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../public/stylesheets/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	<script>
+		$('.js-pscroll').each(function(){
+			$(this).css('position','relative');
+			$(this).css('overflow','hidden');
+			var ps = new PerfectScrollbar(this, {
+				wheelSpeed: 1,
+				scrollingThreshold: 1000,
+				wheelPropagation: false,
+			});
+
+			$(window).on('resize', function(){
+				ps.update();
+			})
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src="../public/scripts/js/main.js"></script>
+
+
+
+
+
+<% include ../partials/footer %>

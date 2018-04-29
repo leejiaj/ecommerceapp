@@ -8,7 +8,7 @@ var express= require("express");
 
 
     router.get("/",function(req,res){
-    	res.redirect("/OrderDetails");
+    	res.redirect("/user/OrderDetails");
     });
 
 
@@ -20,8 +20,9 @@ router.post("/",function(req,res){
         }
         var purchaseid = getRandomIntInclusive(100000,900000);
         var username=req.user.username;
-        var total = req.body.totalprice;
+        //var total = req.body.totalprice;
         var date = (new Date()).toLocaleDateString();
+        var mno=req.body.mnumber;
         var address = req.body.address;
         var OrderDetail=require("../models/purchase");
         var ViewCart=require("../models/cart");
@@ -33,40 +34,35 @@ router.post("/",function(req,res){
             if(err){
                 console.log(err);
             }else{
-                var output = [];
-                //console.log(result.length);
                 for(var i=0;i<result.length;i++){
-                    output.push(result[i].productid);
-                }
-                var newDetails= {
-                    purchaseid:purchaseid,
-                    username:username,
-                    purchasedate:date,
-                    purchaseamount:total,
-                    shippingaddress: address,
-                    orderstatus: status,
-                    productid: output
-                }
-
-                OrderDetail.create(newDetails, function(err,newlyCreated){
-                    if(err){
-                        console.log(err);
-                    }else{
-                        ViewCart.remove({username: username},function(err,result){
-                            if(err){
-                                console.log(err);
-                            }else{
-                                res.render("success",{orderNumber:purchaseid});
-                            }
-                        });
-                        
+                    
+                    var newDetails= {
+                        purchaseid:purchaseid,
+                        username:username,
+                        purchasedate:date,
+                        mobilenumber:mno,
+                        shippingaddress: address,
+                        orderstatus: status,
+                        productid: result[i].productid,
                     }
-                });
-            
-                 
-        }
 
-    });
+                    OrderDetail.create(newDetails, function(err,newlyCreated){
+                        if(err){
+                            console.log(err);
+                        }else{
+                            ViewCart.remove({username: username},function(err,result2){
+                                if(err){
+                                    console.log(err);
+                                }
+                            });
+                        
+                        }
+                    });   
+                }
+                
+                res.render("user/success",{orderNumber:purchaseid});    
+            }
+        });
     });
 
 module.exports = router;

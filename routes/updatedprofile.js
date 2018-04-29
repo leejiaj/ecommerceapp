@@ -25,7 +25,7 @@
                 output[3] = result[0].address ;
                 output[4] = req.user.username;
                 
-                res.render("viewprofile",{userDetails: output});
+                res.render("user/viewprofile",{userDetails: output});
             }
 
     });
