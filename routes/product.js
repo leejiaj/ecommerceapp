@@ -60,7 +60,7 @@ router.post("/:id", middleware.isLoggedIn, function (req, res) {
 });
 
 // add to review, POST route 
-router.post("/:id/addreview", function (req, res) {
+router.post("/:id/addreview", middleware.isLoggedIn, function (req, res) {
 
     var productid = req.params.id;
     var reviewtext = req.body.review;
