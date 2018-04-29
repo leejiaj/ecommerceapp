@@ -7,13 +7,13 @@
 
 
     router.get("/",function(req,res){
-        res.render("edit_profile",{currentUser: req.user});
+        res.render("user/edit_profile",{currentUser: req.user});
     });
 
     var User = require("../models/user");
 
     router.post("/",function(req,res){
-        var username= req.body.username;
+        var username= req.user.username;
         var firstname= req.body.fname;
         var lastname= req.body.lname;
         //var gender = req.body.gender;

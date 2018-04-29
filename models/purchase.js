@@ -5,10 +5,10 @@ var purchaseSchema={
     username:String,
     productid:String,
     purchasedate:String,
-    purchaseamount:String,
+    mobilenumber:Number,
     shippingaddress: String,
     orderstatus: String,
-    productid: Array
+    productid: String,
 };
 
 module.exports=mongoose.model("Purchase",purchaseSchema);

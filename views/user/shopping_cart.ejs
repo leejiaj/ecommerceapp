@@ -1,0 +1,175 @@
+
+<% include ../partials/header %>
+
+		<!--<link rel="stylesheet" type="text/css" href="/stylesheets/vendor/bootstrap/css/bootstrap.min.css">-->
+        <link rel="stylesheet" type="text/css" href="/stylesheets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/fonts/iconic/css/material-design-iconic-font.min.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/fonts/linearicons-v1.0.0/icon-font.min.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/vendor/animate/animate.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/vendor/css-hamburgers/hamburgers.min.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/vendor/animsition/css/animsition.min.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/vendor/select2/select2.min.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/vendor/perfect-scrollbar/perfect-scrollbar.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/css/util.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/css/main.css">
+        <link rel="icon" type="image/png" href="/stylesheets/images/icons/favicon.png"/>
+        
+    <div id="Shopping Cart">
+<div class="container">
+    <div style="width:30%; margin:20px auto;">
+        
+     <h1>Shopping Cart</h1>
+	
+		</div>
+</div>
+</div>
+
+	<!-- Shoping Cart -->
+	<form class="bg0 p-t-75 p-b-85"  action="/shopping_cart" method="POST">
+		<div class="">
+			<div class="row">
+				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
+					<div class="m-l-25 m-r--38 m-lr-0-xl">
+						<div class="wrap-table-shopping-cart">
+							<table class="table-shopping-cart">
+								<tr class="table_head">
+									<th class="column-1">Product</th>
+									<th class="column-2"></th>
+									<th class="column-3">Price</th>
+									<th class="column-3">Quantity</th>
+									<th class="column-3">Total</th>
+								</tr>
+								
+								<% for (var i=0;i< productDetails.length;i++){ %>
+								<tr class="table_row">
+									<td class="column-1">
+										<div class="how-itemcart1">
+											<img src="<%=productDetails[i][2]%>" alt="IMG">
+										</div>
+									</td>
+									<td class="column-2"><%=productDetails[i][0]%></td>
+									<td class="column-3">
+										<input id="price_<%=i%>" type="text" value="$ <%=productDetails[i][1]%>" disabled="disabled">
+									</td>
+									<td class="column-3">
+										<input class="qty" id ="qty_<%=i%>" type="number" name="quantity" value="1" >
+									</td>
+									
+									<td  id="total_<%=i%>" >$<%= 1* productDetails[i][1]%>
+
+									</td>
+									
+									<td class="column-3">
+										<a href='http://localhost:3000/shopping_cart/<%=productDetails[i][3] %>'>remove</a>
+									</td>
+								</tr>
+								
+								<%}%>								
+							</table>
+							<script> 
+									<% for (var i=0;i< productDetails.length;i++){ %>
+									$("#qty_<%=i%>").change(function(){
+										var quantity= $("#qty_<%=i%>").val();
+										var price=  ($("#price_<%=i%>").val()).replace(/[\$]/g, '');
+										var total = quantity * price;
+										$("#total_<%=i%>").html("$"+total);
+									});
+									<%}%>	
+							</script>
+						</div> <br>
+						<div class="size-208">
+								
+								<script>
+									<% for (var i=0;i< productDetails.length;i++){ %>
+									$("#total<%=i%>").change(function(){
+										alert("Hi");
+	            						var totalp=0;
+										<% for (var i=0;i< productDetails.length;i++){ %>
+											var totalp +=("#total_<%=i%>").val()).replace(/[\$]/g, '');	
+										<%}%>
+										alert(totalp);
+										$("#totalp").html("$"+totalp);
+								
+								});
+								<%}%>
+
+								</script>
+							
+								<span class="mtext-101 cl2" id="totalp" >Total: </span>
+								<!--<table> <tr>
+								<td id="totalp1">$ <%= totalPrice %></td>   </tr></table>-->
+								<input id ="totalp" type="text" name="totalprice" value="<%= totalPrice %>" ></input>
+								
+							</div>
+
+						<div class="header-cart-buttons flex-w w-full">
+
+						<button  id ="submit" class="btn btn-primary" style="width:30%; margin:20px auto;">Checkout</button>
+							
+					
+					</div>
+						
+					</div>
+				</div>
+
+				
+			</div>
+		</div>
+	</form>
+		
+	
+		
+
+	
+
+	<!-- Back to top -->
+	<div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="zmdi zmdi-chevron-up"></i>
+		</span>
+	</div>
+
+<!--===============================================================================================-->	
+	<script src="../public/stylesheets/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../public/stylesheets/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../public/stylesheets/vendor/bootstrap/js/popper.js"></script>
+	<script src="../public/stylesheets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../public/stylesheets/vendor/select2/select2.min.js"></script>
+	<script>
+		$(".js-select2").each(function(){
+			$(this).select2({
+				minimumResultsForSearch: 20,
+				dropdownParent: $(this).next('.dropDownSelect2')
+			});
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="../public/stylesheets/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../public/stylesheets/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	<script>
+		$('.js-pscroll').each(function(){
+			$(this).css('position','relative');
+			$(this).css('overflow','hidden');
+			var ps = new PerfectScrollbar(this, {
+				wheelSpeed: 1,
+				scrollingThreshold: 1000,
+				wheelPropagation: false,
+			});
+
+			$(window).on('resize', function(){
+				ps.update();
+			})
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src="../public/scripts/js/main.js"></script>
+
+
+
+
+
+<% include ../partials/footer %>
