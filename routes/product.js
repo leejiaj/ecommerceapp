@@ -4,7 +4,7 @@ var Product    = require("../models/product");
 var Cart       = require("../models/cart");
 var Review     = require("../models/review");
 var middleware = require("../middleware");
-var User = require("../models/user");
+var User 	   = require("../models/user");
 
 // INDEX -- view all products, GET route
 router.get("/", function (req, res) {
@@ -60,11 +60,12 @@ router.post("/:id", middleware.isLoggedIn, function (req, res) {
 });
 
 // add to review, POST route 
-router.post("/:id/addreview", function (req, res) {
+router.post("/:id/addreview", middleware.isLoggedIn, function (req, res) {
 
+    var username =req.user.username;
     var productid = req.params.id;
     var reviewtext = req.body.review;
-    var newReview = {productid: productid, reviewtext:reviewtext};
+    var newReview = {productid: productid, reviewtext:reviewtext, username:username};
     
     // create a new cart and save it to the Database
     Review.create(newReview, function (err, newlyCreated) {
