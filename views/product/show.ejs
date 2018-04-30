@@ -20,8 +20,9 @@
             <p><b>Stock Available: </b><%= product.stockavailable%></p>
             <script type="text/javascript">
             	$(function() {
-	            	if (<%= product.stockavailable%> != "Available") {
+	            	if ("<%= product.stockavailable%>" !== "Available") {
 					  document.getElementById('addtocartdiv').style.display = "none"; 
+                      document.getElementById('addtocartinfo').style.display = "block";
 					}
 				})
 
@@ -33,6 +34,9 @@
         </div>
 
         <div class="col-md-3">
+            <div class="bg-danger" style="display:none;" id="addtocartinfo">
+                <p>Out of stock!</p>
+            </div>
             <div style="margin:40px auto;" id="addtocartdiv">
                 <form action="/product/<%= product._id%>" method="POST">
                     <div class="form-group">
@@ -55,11 +59,14 @@
                 </div>
                 <hr>
                 <% reviews.forEach(function (review) { %>
-                <div class="row bg-info">
+                <div class="row bg-success">
                     <div class="col-md-12">
                         <p>
                             <i><%= review.username %></i>: <%= review.reviewtext %>
                         </p>
+                        <form id="delete-form" action="/product/<%= product._id%>/review/<%= review._id%>?_method=DELETE"method="POST">
+                            <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                        </form>
                     </div>
                 </div>
                 </br>
