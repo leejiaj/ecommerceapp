@@ -30,6 +30,7 @@ Front-end
 ● Javascript
 ● jQuery
 ● Bootstrap
+
 Back-end
 ---------
 ● express
@@ -44,6 +45,7 @@ Back-end
 ● moment
 ● cloudinary
 ● connect-flash
+
 Platforms
 ----------
 ● Cloudinary
