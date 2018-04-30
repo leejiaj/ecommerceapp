@@ -60,47 +60,14 @@
 									</td>
 									
 									<td class="column-3">
-										<a href='http://localhost:3000/shopping_cart/<%=productDetails[i][3] %>'>remove</a>
+										<a href='/shopping_cart/<%=productDetails[i][3] %>'>remove</a>
 									</td>
 								</tr>
 								
 								<%}%>								
 							</table>
-							<script> 
-									<% for (var i=0;i< productDetails.length;i++){ %>
-									$("#qty_<%=i%>").change(function(){
-										var quantity= $("#qty_<%=i%>").val();
-										var price=  ($("#price_<%=i%>").val()).replace(/[\$]/g, '');
-										var total = quantity * price;
-										$("#total_<%=i%>").html("$"+total);
-									});
-									<%}%>	
-							</script>
-						</div> <br>
-						<div class="size-208">
-								
-								<script>
-									<% for (var i=0;i< productDetails.length;i++){ %>
-									$("#total<%=i%>").change(function(){
-										alert("Hi");
-	            						var totalp=0;
-										<% for (var i=0;i< productDetails.length;i++){ %>
-											var totalp +=("#total_<%=i%>").val()).replace(/[\$]/g, '');	
-										<%}%>
-										alert(totalp);
-										$("#totalp").html("$"+totalp);
-								
-								});
-								<%}%>
-
-								</script>
 							
-								<span class="mtext-101 cl2" id="totalp" >Total: </span>
-								<!--<table> <tr>
-								<td id="totalp1">$ <%= totalPrice %></td>   </tr></table>-->
-								<input id ="totalp" type="text" name="totalprice" value="<%= totalPrice %>" ></input>
-								
-							</div>
+						</div> <br>
 
 						<div class="header-cart-buttons flex-w w-full">
 
@@ -167,9 +134,15 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="../public/scripts/js/main.js"></script>
-
-
-
-
+	<script> 
+		<% for (var i=0;i< productDetails.length;i++){ %>
+			$("#qty_<%=i%>").change(function(){
+				var quantity= $("#qty_<%=i%>").val();
+				var price=  ($("#price_<%=i%>").val()).replace(/[\$]/g, '');
+				var total = quantity * price;
+				$("#total_<%=i%>").html("$"+total);
+			});
+		<%}%>	
+	</script>
 
 <% include ../partials/footer %>

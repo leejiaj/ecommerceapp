@@ -3,16 +3,13 @@ var express= require("express");
     var passport=require("passport");
     var User = require("../models/user");
     var objectId= require("mongodb").ObjectID;
-    
-    //edit profile
-
 
     router.get("/",function(req,res){
     	res.redirect("/user/OrderDetails");
     });
 
 
-router.post("/",function(req,res){
+    router.post("/",function(req,res){
         function getRandomIntInclusive(min, max) {
             min = Math.ceil(min);
             max = Math.floor(max);
@@ -20,15 +17,13 @@ router.post("/",function(req,res){
         }
         var purchaseid = getRandomIntInclusive(100000,900000);
         var username=req.user.username;
-        //var total = req.body.totalprice;
         var date = (new Date()).toLocaleDateString();
         var mno=req.body.mnumber;
         var address = req.body.address;
+        var status="Confirmed";
         var OrderDetail=require("../models/purchase");
         var ViewCart=require("../models/cart");
-        var status="Confirmed";
-
-        
+        var Product=require("../models/product");
 
         ViewCart.find({username: username}, function(err,result){
             if(err){
@@ -36,6 +31,11 @@ router.post("/",function(req,res){
             }else{
                 for(var i=0;i<result.length;i++){
                     
+                    Product.update({"_id":objectId(result[i].productid)},{$set:{stockavailable:'Unavailable'}},function(err,result1){
+                        if(err){
+                            console.log(err);
+                        }
+                    });
                     var newDetails= {
                         purchaseid:purchaseid,
                         username:username,
