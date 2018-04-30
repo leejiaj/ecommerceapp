@@ -80,6 +80,6 @@ app.use("/Men",menRoutes);
 app.use("/viewprofile",viewprofileRoutes);
 app.use("/orderdetails",orderRoutes);
 
-app.listen(3000,function(){
-  console.log("Running on Port 3000");
- });
+app.listen(process.env.PORT,process.env.IP,function(){
+   console.log("YelpCamp server has started!"); 
+});

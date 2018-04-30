@@ -48,6 +48,164 @@ function checkUname(){
     return retVal;
 }
 
+function checkFirstName(){
+    var retVal=true;
+    var uname=$("#FirstName");
+    var errMsg="";
+    var unameSpan=$("#FirstName + span");
+    if(!unameSpan.length){
+        $("#FirstName").after("<span></span>");
+        unameSpan=$("#FirstName + span");
+        console.log("Reached here")
+    }
+    else
+    {
+         console.log("Reached here")
+         unameSpan.text("")
+    }
+    unameSpan.hide();
+    
+    if(uname.val()==="")
+    {
+        errMsg+="First Name must not be empty";
+    }
+    else
+    {
+        
+    }
+    if(errMsg!="")
+    {
+        unameSpan.text(errMsg);
+        unameSpan.addClass("error");
+        unameSpan.show();
+        retVal=false;
+    }
+    return retVal;
+}
+
+
+function checkLastName(){
+    var retVal=true;
+    var uname=$("#LastName");
+    var errMsg="";
+    var unameSpan=$("#LastName + span");
+    if(!unameSpan.length){
+        $("#LastName").after("<span></span>");
+        unameSpan=$("#LastName + span");
+        console.log("Reached here")
+    }
+    else
+    {
+         console.log("Reached here")
+         unameSpan.text("")
+    }
+    unameSpan.hide();
+    
+    if(uname.val()==="")
+    {
+        errMsg+="Last Name must not be empty";
+    }
+    else
+    {
+        
+    }
+    if(errMsg!="")
+    {
+        unameSpan.text(errMsg);
+        unameSpan.addClass("error");
+        unameSpan.show();
+        retVal=false;
+    }
+    return retVal;
+}
+function checkAddress(){
+    var retVal=true;
+    var uname=$("#address");
+    var errMsg="";
+    var unameSpan=$("#address + span");
+    if(!unameSpan.length){
+        $("#address").after("<span></span>");
+        unameSpan=$("#address + span");
+        console.log("Reached here")
+    }
+    else
+    {
+         console.log("Reached here")
+         unameSpan.text("")
+    }
+    unameSpan.hide();
+    
+    if(uname.val()==="")
+    {
+        errMsg+="Addresss must not be empty";
+    }
+    else
+    {
+        
+    }
+    if(errMsg!="")
+    {
+        unameSpan.text(errMsg);
+        unameSpan.addClass("error");
+        unameSpan.show();
+        retVal=false;
+    }
+    return retVal;
+}
+
+function phonenumber(inputtxt) {
+  var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+  if(inputtxt.match(phoneno)) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+function checkPhone(){
+    var retVal=true;
+    var uname=$("#mobileNum");
+    var errMsg="";
+    var unameSpan=$("#mobileNum + span");
+    if(!unameSpan.length){
+        $("#mobileNum").after("<span></span>");
+        unameSpan=$("#mobileNum + span");
+        console.log("Reached here")
+    }
+    else
+    {
+         console.log("Reached here")
+         unameSpan.text("")
+    }
+    unameSpan.hide();
+    
+    if(uname.val()==="")
+    {
+        errMsg+="Phone number must not be empty";
+        console.log(errMsg)
+    }
+    else if(!(phonenumber(uname.val())))
+    {
+        errMsg+="Not a valid phone number"
+        console.log(errMsg)
+    }
+    else
+    {
+        
+    }
+    if(errMsg!="")
+    {
+        unameSpan.text(errMsg);
+        unameSpan.addClass("error");
+        unameSpan.show();
+        retVal=false;
+    }
+    return retVal;
+}
+
+
+
+
 function checkpwd()
 {
     var pwd=$("#pwd");
@@ -151,6 +309,77 @@ function clearAllMessages(){
          }
     })
     
+    $("#FirstName").focus(function(){
+        var fnamespan=$("#FirstName + span");
+        var fname=$("#FirstName");
+        
+        if(!fnamespan.length){
+        }
+       else
+        {
+            fnamespan.text("");
+            fnamespan.removeClass();
+            fname.val('');
+         }
+    })
+    
+     $("#LastName").focus(function(){
+        var lnamespan=$("#LastName + span");
+        var lname=$("#LastName");
+        
+        if(!lnamespan.length){
+        }
+       else
+        {
+            lnamespan.text("");
+            lnamespan.removeClass();
+            lname.val('');
+         }
+    })
+    
+    
+     $("#address").focus(function(){
+        var addspan=$("#address + span");
+        var add=$("#address");
+        
+        if(!addspan.length){
+        }
+       else
+        {
+            addspan.text("");
+            addspan.removeClass();
+            add.val('');
+         }
+    })
+    
+    $("#address").focus(function(){
+        var addspan=$("#address + span");
+        var add=$("#address");
+        
+        if(!addspan.length){
+        }
+       else
+        {
+            addspan.text("");
+            addspan.removeClass();
+            add.val('');
+         }
+    })
+    
+    $("#mobileNum").focus(function(){
+        var mspan=$("#mobileNum + span");
+        var mob=$("#mobileNum");
+        
+        if(!mspan.length){
+        }
+       else
+        {
+            mspan.text("");
+            mspan.removeClass();
+            mob.val('');
+         }
+    })
+    
     $("#pwd").focus(function(){
         var pwdSpan=$("#pwd + span");
         var pwd=$("#pwd");
@@ -197,10 +426,14 @@ $(document).ready(function(){
               var u=checkUname();
               var p=checkpwd();
               var e=checkEmail();
+              var f=checkFirstName();
+              var l=checkLastName();
+              var a=checkAddress();
+              var ph=checkPhone();
               var isthere=true;
               var form= this;
               
-              if(u && p && e){
+              if(u && p && e && f && l && a && ph){
                   $.ajax({
                       type:'POST',
                       url:'/grab',
