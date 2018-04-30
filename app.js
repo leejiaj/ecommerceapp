@@ -80,6 +80,6 @@ app.use("/Men",menRoutes);
 app.use("/viewprofile",viewprofileRoutes);
 app.use("/orderdetails",orderRoutes);
 
-app.listen(30000,process.env.IP,function(){
+app.listen(3000,process.env.IP,function(){
    console.log("Bazaar server has started!"); 
 });
