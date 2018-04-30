@@ -63,7 +63,7 @@ router.post("/add",middleware.checkOwnership,upload.single('image'),function(req
     var image=req.body.imageURL;
     var imageId=req.body.imageId ;
     var desc=req.body.desc;
-    var newProduct={productname:name, productimage1:image,description:desc,price:price,category:req.body.category,section:req.body.section,imageId:imageId};
+    var newProduct={stockavailable:"Available",productname:name, productimage1:image,description:desc,price:price,category:req.body.category,section:req.body.section,imageId:imageId};
     Product.create(newProduct,function(err,newProd){
         if(err){
             console.log("Error while adding the new Product");
