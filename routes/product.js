@@ -21,7 +21,6 @@ router.get("/", function (req, res) {
 // SHOW -- display info about a specific product, GET route
 router.get("/:id", function (req, res) {
     // find the product with provided ID
-    console.log(req.params.id);
     Product.findOne({_id:req.params.id}).exec(function (err, foundProduct) {
         if (err) {
             console.log(err);
@@ -52,8 +51,8 @@ router.post("/:id", middleware.isLoggedIn, function (req, res) {
         if (err) {
             console.log(err);
         } else {
-            // redirect to the product route
-
+            // show flash message and redirect to the product route
+            req.flash("success", "Product added to cart!");
             res.redirect("/product/" + req.params.id);
         }
     });
@@ -72,8 +71,23 @@ router.post("/:id/addreview", middleware.isLoggedIn, function (req, res) {
         if (err) {
             console.log(err);
         } else {
-            // redirect to the product route
+            // show flash message and redirect to the product route
+ 			req.flash("success", "Review added!");
+            res.redirect("/product/" + req.params.id);
+        }
+    });
+});
 
+
+// DESTROY review route
+router.delete("/:id/review/:review_id", middleware.checkReviewOwnership, function(req, res) {
+    // delete a review with given id and redirect to product page
+    Review.findByIdAndRemove(req.params.review_id, function(err) {
+        if (err) {
+            res.redirect("/product/" + req.params.id);
+        } else {
+            // show flash message and redirect to show if successfully deleted 
+            req.flash("success", "Review deleted!");
             res.redirect("/product/" + req.params.id);
         }
     });
