@@ -80,6 +80,6 @@ app.use("/Men",menRoutes);
 app.use("/viewprofile",viewprofileRoutes);
 app.use("/orderdetails",orderRoutes);
 
-app.listen(process.env.PORT,process.env.IP,function(){
-   console.log("YelpCamp server has started!"); 
+app.listen(30000,process.env.IP,function(){
+   console.log("Bazaar server has started!"); 
 });
